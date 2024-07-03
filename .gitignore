@@ -3,3 +3,4 @@ package_lock.json/
 yarn.lock/
 build/
 dist/
+.idea/

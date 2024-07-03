@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/login/LoginPage';
 import IndiviualPage from './pages/register/indiviual/IndiviualPage';
 import CompanyPage from './pages/register/company/CompanyPage';
+import Dashboard from "./pages/Dashboard/Dashboard.tsx";
+
 
 const App = () => {
   return (
@@ -14,6 +16,7 @@ const App = () => {
           <Route path='/signup/individual' element={<IndiviualPage />}></Route>
           <Route path='/signup/company' element={<CompanyPage />}></Route>
         </Route>
+        <Route path='/dashboard' element={<Dashboard />}></Route>
       </Routes>
     </BrowserRouter>
   );

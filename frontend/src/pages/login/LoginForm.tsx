@@ -11,7 +11,7 @@ const LoginForm = () => {
           <h1 className='text-3xl'>Please enter login details below</h1>
           <div className='flex-row gap-2  text-3xl font-normal flex'>
             <h1>or sign up at</h1>
-            <Link className='text-blue-600' to={'/'}>
+            <Link className='text-blue-600' to={'/signup/individual'}>
               sign up
             </Link>
           </div>

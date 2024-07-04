@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/login/LoginPage';
 import IndiviualPage from './pages/register/indiviual/IndiviualPage';
 import CompanyPage from './pages/register/company/CompanyPage';
-import Dashboard from "./pages/Dashboard/Dashboard.tsx";
-
+import Dashboard from './pages/Dashboard/Dashboard.tsx';
+import SubPage from './pages/Dashboard/Subscription/SubPage.tsx';
 
 const App = () => {
   return (
@@ -16,7 +16,9 @@ const App = () => {
           <Route path='/signup/individual' element={<IndiviualPage />}></Route>
           <Route path='/signup/company' element={<CompanyPage />}></Route>
         </Route>
-        <Route path='/dashboard' element={<Dashboard />}></Route>
+        <Route path='/dashboard' element={<Dashboard />}>
+          <Route path='/dashboard/sub' element={<SubPage />}></Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   );

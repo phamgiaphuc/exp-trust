@@ -1,42 +1,88 @@
-import React from 'react';
-import exptrust from '../../assets/exptrust.png';
-import avatar from '../../assets/avatar.png';
-import { Link } from 'react-router-dom';
+import Logo from '../../assets/logo.png';
+import Avatar from '../../assets/avatar.png';
+import { Link, useLocation } from 'react-router-dom';
+import { LuLayoutDashboard, LuUserCircle } from 'react-icons/lu';
+import { IoLogoLinkedin } from 'react-icons/io';
+import { IoSettingsOutline, IoWalletOutline } from 'react-icons/io5';
 
-const NavColumn: React.FC = () => {
+const navColumnData = [
+  {
+    id: '1',
+    path: '/dashboard',
+    label: 'Dashboard',
+    icon: <LuLayoutDashboard className='w-6 h-6' />
+  },
+  {
+    id: '2',
+    path: '/dashboard/profile',
+    label: 'Profile',
+    icon: <LuUserCircle className='w-6 h-6' />
+  },
+  {
+    id: '3',
+    path: '/dashboard/linkedin',
+    label: 'Linkedin',
+    icon: <IoLogoLinkedin className='w-6 h-6' />
+  },
+  {
+    id: '4',
+    path: '/dashboard/settings',
+    label: 'Settings',
+    icon: <IoSettingsOutline className='w-6 h-6' />
+  },
+  {
+    id: '5',
+    path: '/dashboard/sub',
+    label: 'Subscription',
+    isDiff: true,
+    icon: <IoWalletOutline className='w-6 h-6' />
+  }
+];
+
+const NavColumn = () => {
+  const location = useLocation();
   return (
-    <div className='bg-white flex flex-col items-center justify-start h-full w-1/6 border-[1px] border-[#BABABA]'>
-      <img src={exptrust} className='object-fit w-auto size-12 mt-[12px]' alt='' />
-      <div className={'flex flex-col items-center justify-center mt-[78px]'}>
-        <img src={avatar} className={'size-32 object-fill w-auto'} alt='' />
-        <h1 className={'text-black text-center font-inter text-[28px] font-[700] leading-normal'}>Le Thanh Danh</h1>
-        <h1 className={'text-[#B0B0B0] text-center font-inter text-[18px] font-[500] leading-normal'}>Individual</h1>
+    <div className='bg-gradient-to-br from-[#EEF0FF] to-[#F5F5F5] sticky flex flex-col items-center gap-6 min-h-screen w-1/6 border-r border-r-gray-400 p-4'>
+      <Link to={'/dashboard'} className='flex gap-2 items-center'>
+        <img src={Logo} alt='website-et-logo' className='w-10 h-10' />
+        <span className='text-3xl font-semibold'>ExpTrust</span>
+      </Link>
+      <div className='flex flex-col items-center'>
+        <img src={Avatar} alt='user-avatar' className='w-16 h-16' />
+        <span className='text-lg font-semibold mt-2'>Pham The Binh</span>
+        <span className='font-light text-slate-400'>ExpTrust HR</span>
       </div>
-      <div className={'flex flex-col items-center justify-center mt-[38px]'}>
-        <h1 className={'text-black text-center font-inter text-[24px] font-[700] leading-normal'}>Main Menu</h1>
-        <Link className={navLinkStyle} to=''>
-          Dashboard
-        </Link>
-        <Link className={navLinkStyle} to=''>
-          Profile
-        </Link>
-        <Link className={navLinkStyle} to=''>
-          LinkedIn
-        </Link>
-        <Link className={navLinkStyle} to=''>
-          Settings
-        </Link>
-      </div>
-      <div className='mt-[20px] w-[194px] h-[59px] bg-gradient-to-r from-[#4F4F4F] via-purple-500 to-[#2009AA] rounded-[8px] justify-center items-center flex'>
-        <Link className={'text-white font-inter text-[24px] font-[600] leading-normal'} to='/dashboard/sub'>
-          Subscription
-        </Link>
+      <div className='text-center w-full mr-2'>
+        <span className='font-semibold text-lg'>Main menu</span>
+        <div className='flex flex-col mt-4 gap-2'>
+          {navColumnData.map((nav) => {
+            if (nav?.isDiff) {
+              return (
+                <Link
+                  key={nav.id}
+                  to={nav.path}
+                  className='flex gap-2 items-center bg-gradient-to-r from-[#4F4F4F] to-[#2009AA] text-white py-2 px-6 rounded-xl'
+                >
+                  {nav.icon}
+                  {nav.label}
+                </Link>
+              );
+            }
+            return (
+              <Link
+                key={nav.id}
+                to={nav.path}
+                className={`flex gap-2 items-center rounded-xl px-6 py-2 ${location.pathname === nav.path ? 'bg-black text-white' : 'hover:bg-black hover:text-white'}`}
+              >
+                {nav.icon}
+                {nav.label}
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
 };
-
-const navLinkStyle: string =
-  'text-black text-center p-2  font-inter text-[20px] font-[500] leading-normal hover:bg-gray-200/70 hover:rounded-xl';
 
 export default NavColumn;

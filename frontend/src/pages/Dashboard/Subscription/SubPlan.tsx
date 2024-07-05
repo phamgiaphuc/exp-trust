@@ -1,5 +1,3 @@
-import React from 'react';
-
 const SubPlan = () => {
   return (
     <div className='flex flex-rows gap-24 w-8/12 h-3/4 items-center justify-center '>

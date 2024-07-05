@@ -1,6 +1,6 @@
 import React from 'react';
-import NavColumn from './NavColumn.tsx';
 import { Outlet } from 'react-router-dom';
+import NavColumn from './NavColumn';
 
 const Dashboard: React.FC = () => {
   return (

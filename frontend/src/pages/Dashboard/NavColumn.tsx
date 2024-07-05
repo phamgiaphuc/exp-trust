@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 const NavColumn: React.FC = () => {
   return (
-    <div className={' bg-white flex flex-col items-center justify-start h-full w-1/6 border-[1px] border-[#BABABA]'}>
-      <img src={exptrust} className=' object-fit w-auto size-12 mt-[12px]' alt='' />
+    <div className='bg-white flex flex-col items-center justify-start h-full w-1/6 border-[1px] border-[#BABABA]'>
+      <img src={exptrust} className='object-fit w-auto size-12 mt-[12px]' alt='' />
       <div className={'flex flex-col items-center justify-center mt-[78px]'}>
         <img src={avatar} className={'size-32 object-fill w-auto'} alt='' />
         <h1 className={'text-black text-center font-inter text-[28px] font-[700] leading-normal'}>Le Thanh Danh</h1>

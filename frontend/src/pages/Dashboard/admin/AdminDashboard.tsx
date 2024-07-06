@@ -19,8 +19,18 @@ import { BsThreeDots } from 'react-icons/bs';
 import { format } from 'date-fns';
 import { FaArrowDown, FaArrowUp, FaMinus } from 'react-icons/fa';
 import ExportBtn from './ExportBtn';
+import InfoModal from './InfoModal';
+
+interface ModalDataProps {
+  open: boolean;
+  index?: number;
+  data?: Ticket;
+}
 
 const AdminDashboard = () => {
+  const [openModal, setOpenModal] = useState<ModalDataProps>({
+    open: false
+  });
   const [data, setData] = useState<Ticket[]>(ticketData);
   const [selectedData, setSelectedData] = useState<RowSelectionState>({});
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -163,8 +173,16 @@ const AdminDashboard = () => {
     }),
     columnHelper.display({
       id: 'actions',
-      cell: () => (
-        <button>
+      cell: (props) => (
+        <button
+          onClick={() => {
+            setOpenModal({
+              open: true,
+              index: props.row.index,
+              data: props.row.original
+            });
+          }}
+        >
           <BsThreeDots />
         </button>
       )
@@ -186,6 +204,30 @@ const AdminDashboard = () => {
     enableRowSelection: (row) => row.original.status !== 'Rejected'
   });
 
+  const onClickPreviousTicket = useCallback(() => {
+    if (openModal?.index !== undefined) {
+      const sortedRows = table.getSortedRowModel().rows;
+      const currentIndex = (openModal.index === 0 ? sortedRows.length : openModal.index) - 1;
+      setOpenModal({
+        open: true,
+        index: currentIndex,
+        data: sortedRows[currentIndex].original
+      });
+    }
+  }, [openModal, table]);
+
+  const onClickNextTicket = useCallback(() => {
+    if (openModal?.index !== undefined) {
+      const sortedRows = table.getSortedRowModel().rows;
+      const currentIndex = (openModal.index + 1) % sortedRows.length;
+      setOpenModal({
+        open: true,
+        index: currentIndex,
+        data: sortedRows[currentIndex].original
+      });
+    }
+  }, [openModal, table]);
+
   return (
     <div className='p-4 h-screen'>
       <div className='bg-white h-full border border-gray-400 flex flex-col'>
@@ -201,14 +243,14 @@ const AdminDashboard = () => {
             </button>
             <ExportBtn data={selectedData} />
             <button
-              className='bg-red-600 px-4 py-2 rounded-lg flex gap-2 items-center text-white disabled:opacity-75'
+              className='bg-red-600 px-4 py-2 rounded-lg flex gap-2 items-center text-white disabled:opacity-50'
               disabled={!selectedLength}
             >
               <IoTrashBinOutline className='w-6 h-6' />
               Delete ({selectedLength})
             </button>
             <button
-              className='bg-blue-600 px-4 py-2 rounded-lg text-white flex gap-2 items-center disabled:opacity-75'
+              className='bg-blue-600 px-4 py-2 rounded-lg text-white flex gap-2 items-center disabled:opacity-50'
               disabled={!selectedLength}
             >
               <IoCheckmark className='w-6 h-6' />
@@ -223,7 +265,7 @@ const AdminDashboard = () => {
                 {table.getHeaderGroups().map((headerGroup) => (
                   <tr key={headerGroup.id}>
                     {headerGroup.headers.map((header) => (
-                      <th key={header.id} className='capitalize px-3 py-6'>
+                      <th key={header.id} className='capitalize px-3 py-4'>
                         {flexRender(header.column.columnDef.header, header.getContext())}
                       </th>
                     ))}
@@ -284,6 +326,18 @@ const AdminDashboard = () => {
           </button>
         </div>
       </div>
+      <InfoModal
+        open={openModal.open}
+        data={openModal?.data}
+        onClose={() =>
+          setOpenModal({
+            open: false,
+            data: undefined
+          })
+        }
+        onClickNext={() => onClickNextTicket()}
+        onClickPrevious={() => onClickPreviousTicket()}
+      />
     </div>
   );
 };

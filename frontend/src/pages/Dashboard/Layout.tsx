@@ -6,7 +6,7 @@ const DashboardLayout: React.FC = () => {
   return (
     <div className='flex relative'>
       <NavColumn />
-      <div className='flex-1 ml-80'>
+      <div className='flex-1 ml-[16.7%]'>
         <Outlet />
       </div>
     </div>

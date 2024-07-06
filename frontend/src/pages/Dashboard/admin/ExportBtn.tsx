@@ -23,7 +23,7 @@ const ExportBtn = ({ data, fileName = 'Verifications' }: ExportBtnProps) => {
 
   return (
     <button
-      className='bg-gray-200 rounded-lg px-4 py-2 flex gap-2 items-center disabled:opacity-75 disabled:cursor-default cursor-pointer'
+      className='bg-gray-200 rounded-lg px-4 py-2 flex gap-2 items-center disabled:opacity-50 disabled:cursor-default cursor-pointer'
       disabled={Object.keys(data).length === 0}
       onClick={() => exportFile()}
     >

@@ -1,8 +1,7 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
 import NavColumn from './NavColumn';
 
-const DashboardLayout: React.FC = () => {
+const DashboardLayout = () => {
   return (
     <div className='flex'>
       <NavColumn />

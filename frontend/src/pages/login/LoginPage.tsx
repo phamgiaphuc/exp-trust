@@ -1,4 +1,3 @@
-import React from 'react';
 import login from '../../assets/login.png';
 import LoginForm from './LoginForm';
 import exptrust from '../../assets/exptrust.png';

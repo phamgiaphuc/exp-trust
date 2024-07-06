@@ -2,13 +2,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/login/LoginPage';
 import IndiviualPage from './pages/register/indiviual/IndiviualPage';
 import CompanyPage from './pages/register/company/CompanyPage';
-import DashboardLayout from './pages/dashboard/Layout.tsx';
-import SubPage from './pages/dashboard/subscription/SubPage.tsx';
+import DashboardLayout from './pages/Dashboard/Layout.tsx';
+import SubPage from './pages/Dashboard/Subscription/SubPage.tsx';
 import HomePage from './pages/home/HomePage.tsx';
-import LinkedInPage from './pages/dashboard/linkedin/LinkedInPage.tsx';
-import ProfilePage from './pages/dashboard/profile/ProfilePage.tsx';
-import SettingsPage from './pages/dashboard/settings/SettingsPage.tsx';
-import DashboardPage from './pages/dashboard/DashboardPage.tsx';
+import LinkedInPage from './pages/Dashboard/linkedin/LinkedInPage.tsx';
+import ProfilePage from './pages/Dashboard/profile/ProfilePage.tsx';
+import SettingsPage from './pages/Dashboard/settings/SettingsPage.tsx';
+import DashboardPage from './pages/Dashboard/DashboardPage.tsx';
 
 const App = () => {
   return (

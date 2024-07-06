@@ -10,10 +10,10 @@ const UserDashboard = () => {
         <AddressandSearchBar />
       </div>
       <div className='h-full'>
-        <div id='header' className='p-2 text-4xl text-[#858585] border-[#858585] border-b-2'>
+        <div id='header' className='p-2 text-4xl bg-white rounded-t-lg text-[#858585] border-[#858585] border-b-2'>
           {user}/dashboard
         </div>
-        <div className='flex flex-row p-4 '>
+        <div className='flex flex-row p-4 bg-white rounded-b-lg h-[94%] '>
           <div className='w-6/12'>
             <Career />
           </div>

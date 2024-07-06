@@ -21,7 +21,13 @@ const Upload = () => {
               <input className={inputStyle} type='text' placeholder='Company Name' />
               <input className={inputStyle} type='text' placeholder='Representative' />
               <input className={inputStyle} type='email' placeholder='Bussiness email of the company' />
-              <input className={inputStyle} type='text' placeholder='Role' />
+              <div className=' flex justify-between items-center flex-row h-full '>
+                <input className={inputStyle2} type='text' placeholder='Role' />
+                <select className='h-16 mt-5 border-2 px-4 rounded-lg w-[48%]' name='type' id=''>
+                  <option value='career'>Career</option>
+                  <option value='certification'>Certification</option>
+                </select>
+              </div>
               <div className='flex justify-between flex-row h-full '>
                 <input className={inputStyle2} type='text' placeholder='Start date' />
                 <input className={inputStyle2} type='text' placeholder='Present/End date' />

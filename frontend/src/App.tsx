@@ -2,15 +2,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/login/LoginPage';
 import IndiviualPage from './pages/register/indiviual/IndiviualPage';
 import CompanyPage from './pages/register/company/CompanyPage';
-import DashboardLayout from './pages/dashboard/Layout';
-import SubPage from './pages/dashboard/subscription/SubPage';
+import DashboardLayout from './pages/Dashboard/Layout';
+import SubPage from './pages/Dashboard/Subscription/SubPage';
 import HomePage from './pages/home/HomePage';
-import LinkedInPage from './pages/dashboard/linkedin/LinkedInPage';
-import ProfilePage from './pages/dashboard/profile/ProfilePage';
-import SettingsPage from './pages/dashboard/settings/SettingsPage';
-import AdminDashboard from './pages/dashboard/admin/AdminDashboard';
-import Upload from './pages/dashboard/upload/Upload';
-import UserDashboard from './pages/dashboard/user/UserDashboard';
+import LinkedInPage from './pages/Dashboard/linkedin/LinkedInPage';
+import ProfilePage from './pages/Dashboard/profile/ProfilePage';
+import SettingsPage from './pages/Dashboard/settings/SettingsPage';
+import AdminDashboard from './pages/Dashboard/admin/AdminDashboard';
+import UserDashboard from './pages/Dashboard/user/UserDashboard';
+import Upload from './pages/Dashboard/upload/Upload';
 
 const App = () => {
   return (

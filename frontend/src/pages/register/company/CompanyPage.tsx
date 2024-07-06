@@ -1,5 +1,4 @@
 import React from 'react';
-import login2 from '../../../assets/login2.png';
 import exptrust from '../../../assets/exptrust.png';
 import CompanyForm from './CompanyForm.tsx';
 import { Link } from 'react-router-dom';

@@ -19,6 +19,27 @@ const Certi = () => {
         provider='son'
         date='1/1/2024'
       ></ExpCard>
+      <ExpCard
+        verify='pending'
+        title='Semi-Finalist GDSC Hackathon'
+        exp='As Fe Dev'
+        provider='son'
+        date='1/1/2024'
+      ></ExpCard>
+      <ExpCard
+        verify='pending'
+        title='Semi-Finalist GDSC Hackathon'
+        exp='As Fe Dev'
+        provider='son'
+        date='1/1/2024'
+      ></ExpCard>{' '}
+      <ExpCard
+        verify='pending'
+        title='Semi-Finalist GDSC Hackathon'
+        exp='As Fe Dev'
+        provider='son'
+        date='1/1/2024'
+      ></ExpCard>
     </div>
   );
 };

@@ -50,4 +50,4 @@ const CompanyForm: React.FC = () => {
 
 export default CompanyForm;
 
-const inputStyle: string = ' border-2 outline-none h-16 text-lg p-2 rounded-lg w-1/2';
+const inputStyle: string = 'border-2 outline-none h-16 text-lg p-2 rounded-lg w-1/2';

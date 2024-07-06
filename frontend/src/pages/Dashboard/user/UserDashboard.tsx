@@ -14,7 +14,7 @@ const UserDashboard = () => {
           <div id='header' className='p-2 text-4xl bg-white rounded-t-lg text-[#858585] border-[#858585] border-b-2'>
             {user}/dashboard
           </div>
-          <div className='flex flex-row p-4 bg-white rounded-b-lg h-4/5 '>
+          <div className='flex flex-row p-4 bg-white rounded-b-lg h-3/4 '>
             <div className='w-6/12 overflow-y-auto'>
               <Career />
             </div>

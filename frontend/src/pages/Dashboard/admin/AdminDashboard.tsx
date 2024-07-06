@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useCallback, useMemo, useState } from 'react';
-import { IoIosCloudDownload } from 'react-icons/io';
 import { IoCheckmark, IoFilterSharp, IoTrashBinOutline } from 'react-icons/io5';
 import { ticketData } from './TicketData';
 import { StatusType, Ticket } from '../../../types/ticket';

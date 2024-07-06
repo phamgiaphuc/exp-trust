@@ -11,16 +11,16 @@ const AddressAndSearchBar = () => {
           0xE9eBF26D8bbdB42E66593F58380305B61813Feab
         </h1>
       </div>
-      <div className="w-96 h-11 flex items-center justify-start text-red-500 rounded-lg border-2 border-[#BABABA]">
+      <div className="w-96 h-11 flex items-center justify-start rounded-lg border-2 border-[#BABABA]">
         <IoSearchOutline className="ml-4 size-19"/>
         <input
           type="text"
           placeholder='Search'
           className='w-full h-full outline-none text-black text-sm font-normal pl-2 rounded-lg' />
       </div>
-      <div></div>
     </div>
   );
 };
+
 
 export default AddressAndSearchBar;

@@ -10,6 +10,7 @@ import ProfilePage from './pages/dashboard/profile/ProfilePage';
 import SettingsPage from './pages/dashboard/settings/SettingsPage';
 import DashboardPage from './pages/dashboard/DashboardPage';
 import AdminDashboard from './pages/dashboard/admin/AdminDashboard';
+import Upload from './pages/dashboard/upload/Upload';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
           <Route path='/dashboard/linkedin' element={<LinkedInPage />} />
           <Route path='/dashboard/profile' element={<ProfilePage />} />
           <Route path='/dashboard/settings' element={<SettingsPage />} />
+          <Route path='/dashboard/upload' element={<Upload />} />
         </Route>
       </Routes>
     </BrowserRouter>

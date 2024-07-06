@@ -1,7 +1,7 @@
-import React from 'react';
 import login from '../../assets/login.png';
 import LoginForm from './LoginForm';
 import exptrust from '../../assets/exptrust.png';
+import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
   return (
@@ -11,7 +11,9 @@ const LoginPage = () => {
       </div>
       <div className='w-6/12 h-full flex '>
         <LoginForm />
-        <img src={exptrust} className=' object-fit w-auto   size-12 ' alt='' />
+        <Link to='/'>
+          <img src={exptrust} className=' object-fit w-auto   size-12 ' alt='' />
+        </Link>
       </div>
     </div>
   );

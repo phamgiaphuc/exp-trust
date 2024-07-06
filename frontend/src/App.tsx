@@ -2,13 +2,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/login/LoginPage';
 import IndiviualPage from './pages/register/indiviual/IndiviualPage';
 import CompanyPage from './pages/register/company/CompanyPage';
-import DashboardLayout from './pages/dashboard/Layout.tsx';
-import SubPage from './pages/dashboard/subscription/SubPage.tsx';
-import HomePage from './pages/home/HomePage.tsx';
-import LinkedInPage from './pages/dashboard/linkedin/LinkedInPage.tsx';
-import ProfilePage from './pages/dashboard/profile/ProfilePage.tsx';
-import SettingsPage from './pages/dashboard/settings/SettingsPage.tsx';
-import DashboardPage from './pages/dashboard/DashboardPage.tsx';
+import HomePage from './pages/home/HomePage';
+import DashboardLayout from './pages/Dashboard/Layout';
+import SubPage from './pages/Dashboard/Subscription/SubPage';
+import LinkedInPage from './pages/Dashboard/linkedin/LinkedInPage';
+import ProfilePage from './pages/Dashboard/profile/ProfilePage';
+import SettingsPage from './pages/Dashboard/settings/SettingsPage';
+import UserDashboard from './pages/Dashboard/user/UserDashboard';
 
 const App = () => {
   return (
@@ -21,7 +21,7 @@ const App = () => {
           <Route path='/signup/company' element={<CompanyPage />} />
         </Route>
         <Route path='/dashboard' element={<DashboardLayout />}>
-          <Route index element={<DashboardPage />} />
+          <Route index element={<UserDashboard />} />
           <Route path='/dashboard/sub' element={<SubPage />} />
           <Route path='/dashboard/linkedin' element={<LinkedInPage />} />
           <Route path='/dashboard/profile' element={<ProfilePage />} />

@@ -1,13 +1,16 @@
 "use strict";
 
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const connectString = `mongodb+srv://admin:123@cluster0.aeysnuj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+
+// dev
 
 class Database {
   constructor() {
     this.connect();
   }
+  //connect
   connect(type = "mongodb") {
     if (1 === 1) {
       mongoose.set("debug", true);

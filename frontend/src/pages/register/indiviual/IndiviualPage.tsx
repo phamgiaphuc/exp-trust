@@ -2,6 +2,7 @@ import React from 'react';
 import login from '../../../assets/login.png';
 import IndiviualForm from './IndiviualForm';
 import exptrust from '../../../assets/exptrust.png';
+import { Link } from 'react-router-dom';
 
 const IndiviualPage = () => {
   return (
@@ -11,7 +12,9 @@ const IndiviualPage = () => {
       </div>
       <div className='w-6/12 flex justify-center  '>
         <IndiviualForm />
-        <img src={exptrust} className='size-12 w-auto object-fit' alt='' />
+        <Link to='/'>
+          <img src={exptrust} className=' object-fit w-auto   size-12 ' alt='' />
+        </Link>
       </div>
     </div>
   );

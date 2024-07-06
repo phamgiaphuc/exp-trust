@@ -18,9 +18,9 @@ const AddressAndSearchBar = () => {
           placeholder='Search'
           className='w-full h-full outline-none text-black text-sm font-normal pl-2 rounded-lg' />
       </div>
+      <div></div>
     </div>
   );
 };
-
 
 export default AddressAndSearchBar;

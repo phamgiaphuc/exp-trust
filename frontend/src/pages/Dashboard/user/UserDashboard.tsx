@@ -24,7 +24,12 @@ const UserDashboard = () => {
             </div>
           </div>
           <div className=' flex justify-center h-16'>
-            <Link to={'/dashboard/upload'} className='bg-[#0029FF] flex justify-center items-center rounded-xl w-3/12 text-white text-2xl font-bold'>Upload</Link>
+            <Link
+              to={'/dashboard/upload'}
+              className='bg-[#0029FF] flex justify-center items-center rounded-xl w-3/12 text-white text-2xl font-bold'
+            >
+              Upload
+            </Link>
           </div>
         </div>
       </div>

@@ -8,8 +8,9 @@ import HomePage from './pages/home/HomePage';
 import LinkedInPage from './pages/dashboard/linkedin/LinkedInPage';
 import ProfilePage from './pages/dashboard/profile/ProfilePage';
 import SettingsPage from './pages/dashboard/settings/SettingsPage';
-import DashboardPage from './pages/dashboard/DashboardPage';
 import AdminDashboard from './pages/dashboard/admin/AdminDashboard';
+import Upload from './pages/dashboard/upload/Upload';
+import UserDashboard from './pages/dashboard/user/UserDashboard';
 
 const App = () => {
   return (
@@ -22,7 +23,7 @@ const App = () => {
           <Route path='/signup/company' element={<CompanyPage />} />
         </Route>
         <Route path='/dashboard' element={<DashboardLayout />}>
-          <Route index element={<DashboardPage />} />
+          <Route index element={<UserDashboard />} />
           <Route path='/dashboard/admin' element={<AdminDashboard />} />
           <Route path='/dashboard/sub' element={<SubPage />} />
           <Route path='/dashboard/linkedin' element={<LinkedInPage />} />

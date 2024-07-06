@@ -9,8 +9,8 @@ import LinkedInPage from './pages/Dashboard/linkedin/LinkedInPage';
 import ProfilePage from './pages/Dashboard/profile/ProfilePage';
 import SettingsPage from './pages/Dashboard/settings/SettingsPage';
 import AdminDashboard from './pages/Dashboard/admin/AdminDashboard';
-import UserDashboard from './pages/Dashboard/user/UserDashboard';
 import Upload from './pages/Dashboard/upload/Upload';
+import UserDashboard from './pages/Dashboard/user/UserDashboard';
 
 const App = () => {
   return (

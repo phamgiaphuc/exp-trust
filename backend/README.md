@@ -4,7 +4,7 @@ This folder contains the backend application for ExpTrust, built with TypeScript
 
 ## Prerequisites
 
-Before running the backend application, ensure you have Node.js and npm installed on your machine.
+Before running the backend application, ensure you have Node.js and yarn installed on your machine.
 
 ## Installation
 
@@ -15,7 +15,7 @@ Before running the backend application, ensure you have Node.js and npm installe
 
 2. Install dependencies:
    ```bash
-   npm install
+   yarn
    ```
 
 ## Development
@@ -23,7 +23,7 @@ Before running the backend application, ensure you have Node.js and npm installe
 To start the backend server with auto-reloading using nodemon:
 
 ```bash
-npm run dev
+yarn run dev
 ```
 
 This command runs the backend application in development mode with nodemon for automatic restarts upon file changes.
@@ -33,8 +33,8 @@ This command runs the backend application in development mode with nodemon for a
 To build and start the production-ready backend application:
 
 ```bash
-npm run build
-npm start
+yarn run build
+yarn start:dev
 ```
 
 ## Additional Information

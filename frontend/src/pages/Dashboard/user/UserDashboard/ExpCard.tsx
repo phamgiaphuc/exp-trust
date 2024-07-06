@@ -40,5 +40,5 @@ const ExpCard = (props: ExpCard) => {
     </div>
   );
 };
-
+// quang dep trai
 export default ExpCard;

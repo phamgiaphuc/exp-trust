@@ -17,7 +17,7 @@ const Upload = () => {
         </div>
         <div className=' h-full '>
           <form className='flex justify-center items-center flex-col gap-2 p-10'>
-            <div className=' flex flex-col w-6/12'>
+            <div className=' flex flex-col w-6/12 '>
               <input className={inputStyle} type='text' placeholder='Company Name' />
               <input className={inputStyle} type='text' placeholder='Representative' />
               <input className={inputStyle} type='email' placeholder='Bussiness email of the company' />
@@ -26,8 +26,7 @@ const Upload = () => {
                 <input className={inputStyle2} type='text' placeholder='Start date' />
                 <input className={inputStyle2} type='text' placeholder='Present/End date' />
               </div>
-            </div>
-            <div className='p-4 border-2 rounded-xl border-dashed  w-6/12'>
+              <div className='border-2 rounded-xl border-dashed mt-10  w-full h-28 flex items-center justify-center bg-[#F1F1F1] text-[#A9A9A9]'>
               <Dropzone onDrop={(acceptedFiles) => console.log(acceptedFiles)}>
                 {({ getRootProps, getInputProps }) => (
                   <section>
@@ -38,6 +37,10 @@ const Upload = () => {
                   </section>
                 )}
               </Dropzone>
+            </div>
+            <div className=' flex justify-center h-16 mt-10'>
+                <button className='bg-[#0029FF] rounded-xl w-3/12 text-white text-2xl font-bold '>Proceed</button>
+            </div>
             </div>
           </form>
         </div>

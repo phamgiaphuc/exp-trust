@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import AddressandSearchBar from './AddressAndSearchBar';
 import Career from './UserDashboard/Career';
 import Certi from './UserDashboard/Certi';
@@ -23,7 +24,7 @@ const UserDashboard = () => {
             </div>
           </div>
           <div className=' flex justify-center h-16'>
-            <button className='bg-[#0029FF] rounded-xl w-3/12 text-white text-2xl font-bold'>Upload</button>
+            <Link to={'/dashboard/upload'} className='bg-[#0029FF] flex justify-center items-center rounded-xl w-3/12 text-white text-2xl font-bold'>Proceed</Link>
           </div>
         </div>
       </div>

@@ -1,27 +1,48 @@
 import ExpCard from "@/models/expCardModel";
 import { Request, Response } from "express";
+import storeDataToBC from "./storeDataToBC";
+import decodeData from "./decodeData";
 
 const uploadRequest = async (req: Request) => {
-  if (req) {
-    const { companyName, representative, compEmail, role, startDate, endDate } =
-      req.body;
-      console.log("newcard ::", role);
-
-    const newStartDate = new Date(startDate);
-    const newEndDate = endDate ? new Date(endDate) : new Date();
-    const exp: number = newEndDate.getFullYear() - newStartDate.getFullYear();
-
-    const newExpCard = await ExpCard.create({
-      verify: "pending",
-      role,
-      exp,
-      companyName,
-      startDate,
-    });
-  }
-  return {
-    message: 'abc'
+  const {companyName, representative, compEmail, role, startDate, endDate, name, phoneNumber, email, proof_file, note} = req.body;
+  try {
+    let total_experience = 0;
+    if (!endDate) {
+      total_experience = new Date().getFullYear() - new Date(startDate).getFullYear();
+    }
+    total_experience = new Date(endDate).getFullYear() - new Date(startDate).getFullYear();
+    const userTicket = {
+      name: name,
+      email: email,
+      phone_number: phoneNumber,
+      position: role,
+      total_experience: total_experience,
+      begin_date: new Date(startDate),
+      end_date: new Date(endDate),
+      note: note,
+      proof_file: proof_file
+    }
+    const newExpCard = await ExpCard.create(userTicket);
+    return newExpCard;
+  } catch (error: any) {
+    throw new Error(error);
   }
 };
+
+export const updateStatus = async (req: Request) => {
+  const ids = req.body;
+  try {
+    const promiseUpdateAll = ids.map(async (id: string) => {
+      return await ExpCard.findByIdAndUpdate(id, {
+        status: 'verified'
+      });
+    });
+    await Promise.all(promiseUpdateAll);
+    const [certificateData] = await ExpCard.find({ status: 'verified' }).sort({ createdAt: -1 });
+    await storeDataToBC(certificateData);
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+}
 
 export default uploadRequest;

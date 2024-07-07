@@ -7,18 +7,23 @@ import { useNavigate } from 'react-router-dom';
 const Upload = () => {
   const nav = useNavigate();
   const [staffRequest, setStaffRequest] = useState({
-    cate:'',
+    name: 'Le Thanh Danh',
+    phoneNumber: '0123456789',
+    email: 'lethanhdanh@mail.com',
+    cate: 'career',
     companyName: '',
     representative: '',
     compEmail: '',
     role: '',
     startDate: '',
-    endDate: ''
+    endDate: '',
+    proof_file: ''
   });
   const user: string = 'lttdanh';
   const inputStyle: string = 'border-2 outline-none h-16 text-xl mt-5 rounded-lg p-4';
   const inputStyle2: string = 'border-2 outline-none h-16 text-xl mt-5 rounded-lg p-4 w-[48%]';
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const changeSubmit = ({ target: { name, value } }: any) => {
     setStaffRequest((prev) => ({
       ...prev,
@@ -37,8 +42,8 @@ const Upload = () => {
         body: JSON.stringify(staffRequest)
       })
         .then((res) => res.json())
-        .then((res: any) => {
-          if(res) {
+        .then((res: Request) => {
+          if (res) {
             nav('/dashboard');
           }
         });
@@ -88,7 +93,15 @@ const Upload = () => {
                   name='role'
                   placeholder='Role'
                 />
-                <select className='h-16 mt-5 border-2 px-4 rounded-lg w-[48%]'>
+                <select
+                  className='h-16 mt-5 border-2 px-4 rounded-lg w-[48%]'
+                  onChange={(e) =>
+                    setStaffRequest((prev) => ({
+                      ...prev,
+                      cate: e.target.value
+                    }))
+                  }
+                >
                   <option value='career'>Career</option>
                   <option value='certification'>Certification</option>
                 </select>
@@ -109,13 +122,28 @@ const Upload = () => {
                   placeholder='Present/End date'
                 />
               </div>
+              <div className='flex justify-between flex-row h-full '>
+                <textarea
+                  name='note'
+                  onChange={(e) => changeSubmit(e)}
+                  placeholder='Your note'
+                  className={'border-2 outline-none h-16 text-xl mt-5 rounded-lg p-4 w-full'}
+                />
+              </div>
               <div className='border-2 rounded-xl border-dashed mt-10  w-full h-28 flex items-center justify-center bg-[#F1F1F1] text-[#A9A9A9]'>
-                <Dropzone onDrop={(acceptedFiles) => console.log(acceptedFiles)}>
+                <Dropzone
+                  onDrop={(acceptedFiles) =>
+                    setStaffRequest((prev) => ({
+                      ...prev,
+                      proof_file: acceptedFiles[0].name
+                    }))
+                  }
+                >
                   {({ getRootProps, getInputProps }) => (
                     <section>
                       <div className='' {...getRootProps()}>
                         <input {...getInputProps()} onChange={(e) => changeSubmit(e)} />
-                        <center>Drag 'n' drop some files here, or click to select files</center>
+                        <center>Drag and drop some files here, or click to select files</center>
                       </div>
                     </section>
                   )}

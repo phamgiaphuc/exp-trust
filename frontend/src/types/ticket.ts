@@ -13,4 +13,4 @@ export interface Ticket {
 }
 
 // eslint-disable-next-line prettier/prettier
-export type StatusType = "Pending" | "Verified" | "Rejected";
+export type StatusType = "pending" | "verified" | "rejected";

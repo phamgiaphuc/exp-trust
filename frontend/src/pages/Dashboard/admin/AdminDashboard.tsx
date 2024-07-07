@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { IoCheckmark, IoFilterSharp, IoTrashBinOutline } from 'react-icons/io5';
-import { ticketData } from './TicketData';
 import { StatusType, Ticket } from '../../../types/ticket';
 import {
   createColumnHelper,
@@ -30,7 +29,7 @@ const AdminDashboard = () => {
   const [openModal, setOpenModal] = useState<ModalDataProps>({
     open: false
   });
-  const [data, setData] = useState<Ticket[]>(ticketData);
+  const [data, setData] = useState<Ticket[]>([]);
   const [selectedData, setSelectedData] = useState<RowSelectionState>({});
   const [sorting, setSorting] = useState<SortingState>([]);
   const columnHelper = createColumnHelper<Ticket>();
@@ -80,7 +79,7 @@ const AdminDashboard = () => {
           <div className='flex items-center gap-2'>
             <input
               type='checkbox'
-              className={`w-4 h-4 cursor-pointer ${props.row.original.status === 'Rejected' && 'invisible'}`}
+              className={`w-4 h-4 cursor-pointer ${props.row.original.status === 'rejected' && 'invisible'}`}
               checked={props.row.getIsSelected()}
               disabled={!props.row.getCanSelect()}
               onChange={props.row.getToggleSelectedHandler()}
@@ -120,7 +119,7 @@ const AdminDashboard = () => {
           </div>
         );
       },
-      cell: (props) => <span>{props.getValue()}</span>
+      cell: (props) => <span>{props.getValue()} years</span>
     }),
     columnHelper.accessor('begin_date', {
       header: 'Begin Date',
@@ -142,7 +141,7 @@ const AdminDashboard = () => {
       header: 'Status',
       cell: (props) => {
         const statusType = props.getValue() as StatusType;
-        if (statusType === 'Pending') {
+        if (statusType === 'pending') {
           return (
             <div className='py-2 px-4 rounded-2xl text-yellow-600 bg-yellow-100 w-fit flex items-center gap-2'>
               <div className='w-2 h-2 rounded-full bg-yellow-600' />
@@ -150,7 +149,7 @@ const AdminDashboard = () => {
             </div>
           );
         }
-        if (statusType === 'Rejected') {
+        if (statusType === 'rejected') {
           return (
             <div className='py-2 px-4 rounded-2xl text-red-800 bg-red-200 w-fit flex items-center gap-2'>
               <div className='w-2 h-2 rounded-full bg-red-800' />
@@ -188,6 +187,28 @@ const AdminDashboard = () => {
     })
   ];
 
+  useEffect(() => {
+    try {
+      fetch('http://localhost:8000/api/v1/certi', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const data = res.map((data: any) => ({
+            ...data,
+            id: data._id
+          }));
+          setData(data);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   const table = useReactTable({
     data,
     columns,
@@ -200,7 +221,7 @@ const AdminDashboard = () => {
     },
     onRowSelectionChange: setSelectedData,
     onSortingChange: setSorting,
-    enableRowSelection: (row) => row.original.status !== 'Rejected'
+    enableRowSelection: (row) => row.original.status !== 'rejected'
   });
 
   const onClickPreviousTicket = useCallback(() => {
@@ -227,6 +248,31 @@ const AdminDashboard = () => {
     }
   }, [openModal, table]);
 
+  const onClickVerify = useCallback(async () => {
+    const tickets = Object.keys(selectedData).map((index: string) => {
+      return data[Number(index)];
+    });
+    const ids = tickets.map((ticket) => ticket.id);
+    console.log(ids);
+    try {
+      const response = await fetch('http://localhost:8000/user/update', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(ids)
+      });
+
+      if (response.ok) {
+        window.location.reload();
+      } else {
+        console.log('Failed to update');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, [data, selectedData]);
+
   return (
     <div className='p-4 h-screen'>
       <div className='bg-white h-full border border-gray-400 flex flex-col'>
@@ -251,6 +297,7 @@ const AdminDashboard = () => {
             <button
               className='bg-blue-600 px-4 py-2 rounded-lg text-white flex gap-2 items-center disabled:opacity-50'
               disabled={!selectedLength}
+              onClick={() => onClickVerify()}
             >
               <IoCheckmark className='w-6 h-6' />
               Verify ({selectedLength})

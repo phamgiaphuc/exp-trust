@@ -1,5 +1,7 @@
 import ExpCard from "@/models/expCardModel";
 import { Request, Response } from "express";
+import storeDataToBC from "./storeDataToBC";
+import decodeData from "./decodeData";
 
 const uploadRequest = async (req: Request) => {
   if (req) {
@@ -18,6 +20,10 @@ const uploadRequest = async (req: Request) => {
       companyName,
       startDate,
     });
+    const [certificateData] = await ExpCard.find().sort({ createdAt: -1 });
+    console.log(certificateData);
+    await storeDataToBC(certificateData);
+    // await decodeData(publicKey);
   }
   return {
     message: 'abc'

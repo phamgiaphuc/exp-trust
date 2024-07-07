@@ -55,7 +55,6 @@ const storeDataToBC = async (certiData: any) => {
         createAccountTransaction,
         [issuer, certificateAccount]
       );
-
       const createDataTransaction = new solanaWeb3.Transaction().add({
         keys: [
           {
@@ -67,7 +66,6 @@ const storeDataToBC = async (certiData: any) => {
         programId: solanaWeb3.SystemProgram.programId,
         data: Buffer.from(sha256Certi), // Assuming data is a string, adjust accordingly
       });
-
       // Sign and send the transaction
       await solanaWeb3.sendAndConfirmTransaction(
         connection,

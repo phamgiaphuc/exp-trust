@@ -32,4 +32,18 @@ const uploadRequest = async (req: Request) => {
   }
 };
 
+export const updateStatus = async (req: Request) => {
+  const ids = req.body;
+  try {
+    const promiseUpdateAll = ids.map(async (id: string) => {
+      return await ExpCard.findByIdAndUpdate(id, {
+        status: 'verified'
+      });
+    });
+    await Promise.all(promiseUpdateAll);
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+}
+
 export default uploadRequest;

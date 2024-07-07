@@ -23,9 +23,6 @@ const uploadRequest = async (req: Request) => {
       proof_file: proof_file
     }
     const newExpCard = await ExpCard.create(userTicket);
-    const [certificateData] = await ExpCard.find().sort({ createdAt: -1 });
-    console.log(certificateData);
-    await storeDataToBC(certificateData);
     return newExpCard;
   } catch (error: any) {
     throw new Error(error);
@@ -41,6 +38,8 @@ export const updateStatus = async (req: Request) => {
       });
     });
     await Promise.all(promiseUpdateAll);
+    const [certificateData] = await ExpCard.find({ status: 'verified' }).sort({ createdAt: -1 });
+    await storeDataToBC(certificateData);
   } catch (error: any) {
     throw new Error(error.message);
   }

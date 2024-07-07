@@ -28,7 +28,7 @@ const navColumnData = [
   {
     id: '4',
     path: '/dashboard/linkedin',
-    label: 'Linkedin',
+    label: 'Explorer',
     icon: <IoLogoLinkedin className='w-6 h-6' />
   },
   {

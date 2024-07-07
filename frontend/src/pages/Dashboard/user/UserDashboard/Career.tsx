@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 import ExpCard from './ExpCard';
 const Career = () => {
-  const [expData, setExpData] = useState([])
+  const [expData, setExpData] = useState([]);
   useEffect(() => {
     try {
       fetch('http://localhost:8000/api/v1/certi', {
         method: 'GET'
       })
-        .then((res:any) => res.json())
+        .then((res: any) => res.json())
         .then((res: any) => {
           setExpData(res);
-          console.log(expData)
+          console.log(expData);
         });
     } catch (error) {
       console.log(error);

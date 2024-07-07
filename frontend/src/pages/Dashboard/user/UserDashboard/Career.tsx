@@ -7,9 +7,10 @@ const Career = () => {
       fetch('http://localhost:8000/api/v1/certi', {
         method: 'GET'
       })
-        .then((res) => res.json())
+        .then((res:any) => res.json())
         .then((res: any) => {
           setExpData(res);
+          console.log(expData)
         });
     } catch (error) {
       console.log(error);
@@ -22,9 +23,9 @@ const Career = () => {
         {expData.map((expCard: any, index: number): any => {
           return (
             <ExpCard
-              verify={expCard.verify}
+              verify={expCard.status}
               title={expCard.title}
-              exp={`${expCard.exp}` + ' year of experience'}
+              exp={`${expCard.total_experience}` + ' year of experience'}
               provider={expCard.provider}
               date={expCard.date}
               key={index}

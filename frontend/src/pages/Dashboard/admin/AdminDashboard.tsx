@@ -18,7 +18,6 @@ import { format } from 'date-fns';
 import { FaArrowDown, FaArrowUp, FaMinus } from 'react-icons/fa';
 import ExportBtn from './ExportBtn';
 import InfoModal from './InfoModal';
-import { useNavigation } from 'react-router-dom';
 
 interface ModalDataProps {
   open: boolean;
